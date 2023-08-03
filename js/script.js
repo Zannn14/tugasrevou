@@ -15,5 +15,30 @@ function showSlides() {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  setTimeout(showSlides, 2000);
+}
+
+
+function validateForm() {
+  var nameInput = document.getElementById("nameInput");
+  var emailInput = document.getElementById("emailInput");
+
+  if (nameInput.value.trim() === "") {
+    alert("Please enter your name.");
+    nameInput.focus();
+    return false;
+  }
+
+  if (!isValidEmail(emailInput.value)) {
+    alert("Please enter a valid email address.");
+    emailInput.focus();
+    return false;
+  }
+  alert("Data berhasil dikirim");
+  return true;
+}
+
+function isValidEmail(email) {
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
 }
